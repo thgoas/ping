@@ -33,7 +33,7 @@ function cronJob() {
                             }
                         })
                     } else {
-                        if (alerta.data + 300000 <= new Date().getTime()) {
+                        if (alerta.data + (5 * 60 * 1000)  <= new Date().getTime()) {
                             await alertaModel.delete(loja.nome);
                             await alertaModel.create({
                                 nome: loja.nome,
