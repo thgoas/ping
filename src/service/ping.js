@@ -2,7 +2,7 @@ const childProcess = require('child_process');
 async function pingIp(ip) {
     try {
         const output = await new Promise((resolve, reject) => {
-            childProcess.exec(`ping -c 5 ${ip}`, (error, stdout, stderr) => {
+            childProcess.exec(`ping -c 10 ${ip}`, (error, stdout, stderr) => {
               if (error) {
                 reject(error);
               } else {
