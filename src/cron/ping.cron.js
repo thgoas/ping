@@ -2,7 +2,7 @@
 const cron = require('node-cron');
 const { findAll } = require('../models/loja.model');
 const alertaModel = require('../models/alerta.model');
-const pingIp = require('../service/ping');
+const { pingIp }= require('../service/ping');
 function cronJob() {
     cron.schedule('* * * * *', async function () {
         try {
@@ -13,7 +13,7 @@ function cronJob() {
                 if(loja.status === 0){
                     return;
                 }
-                const result = pingIp(loja.ip);
+                const result = await pingIp(loja.ip);
                 if (!result) {
                     const alerta = await alertaModel.findById(loja.nome);
                     console.log(alerta)
