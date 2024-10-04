@@ -11,14 +11,22 @@ exports.open = () => {
       }
     });
     db.run(`CREATE TABLE IF NOT EXISTS alertas (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, ip TEXT, data TEXT)`, (err) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve();
-        }
-      });
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+    db.run(`CREATE TABLE IF NOT EXISTS minutos (valor INTEGER PRIMARY KEY)`, (err) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
   });
-  
+
+
 };
 
 exports.close = () => {
