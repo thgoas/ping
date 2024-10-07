@@ -8,6 +8,7 @@ function cronJob() {
     cron.schedule('* * * * *', async function () {
         try {
             const minuto = await minutoModel.findAll();
+         
             await enviarAlerta(minuto[0].valor);
           
         } catch (error) {

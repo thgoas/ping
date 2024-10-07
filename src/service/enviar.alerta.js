@@ -3,6 +3,7 @@ const alertaModel = require('../models/alerta.model');
 const { pingIp }= require('./ping');
 
 async function enviarAlerta(minutos = 10) {
+   
     try {
 
         const lojas = await lojaModel.findAll();
@@ -37,7 +38,7 @@ async function enviarAlerta(minutos = 10) {
                         await alertaModel.create({
                             nome: loja.nome,
                             ip: loja.ip,
-                            data: new Date().getTime()  + (5 * 60 * 1000)
+                            data: new Date().getTime()  + (minutos * 60 * 1000)
 
                         })
 
