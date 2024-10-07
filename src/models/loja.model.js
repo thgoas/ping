@@ -90,6 +90,7 @@ exports.delete = async (nome) => {
         
         resolve();
       }
+      db.close();
     });
   });
 };

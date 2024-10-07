@@ -18,6 +18,7 @@ exports.findAll = () => {
       } else {
         resolve(rows.map((row) => new Minuto(row.valor)));
       }
+      db.close();
     });
   });
 };
