@@ -26,6 +26,7 @@ exports.findById = (nome) => {
             resolve(new Alerta(row.nome, row.ip, row.data));
         }
       }
+      db.close();
     });
   });
 };
@@ -40,6 +41,7 @@ exports.create = (alerta) => {
       } else {
         resolve();
       }
+      db.close();
     });
   });
 };
@@ -59,6 +61,7 @@ exports.delete = async (nome) => {
         
         resolve();
       }
+      db.close();
     });
   });
 };

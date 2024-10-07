@@ -38,6 +38,7 @@ exports.create = async (minuto) => {
       } else {
         resolve();
       }
+      db.close();
     });
   });
 };
@@ -52,6 +53,7 @@ exports.delete = async () => {
 
         resolve();
       }
+      db.close();
     });
   });
 };

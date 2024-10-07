@@ -21,6 +21,7 @@ exports.findAll = () => {
       } else {
         resolve(rows.map((row) => new Loja(row.nome, row.ip, row.status, row.tipo)));
       }
+      db.close();
     });
   });
 };
@@ -40,6 +41,7 @@ exports.findById = (nome) => {
             resolve(new Loja(row.nome, row.ip, row.status, row.tipo));
         }
       }
+      db.close();
     });
   });
 };
@@ -54,6 +56,7 @@ exports.create = (loja) => {
       } else {
         resolve();
       }
+      db.close();
     });
   });
 };
@@ -67,6 +70,7 @@ exports.update = (nome, loja) => {
       } else {
         resolve();
       }
+      db.close();
     });
   });
 };
