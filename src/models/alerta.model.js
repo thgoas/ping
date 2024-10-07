@@ -11,6 +11,19 @@ class Alerta {
 
 exports.Alerta = Alerta;
 
+exports.findAll = () => {
+  return new Promise((resolve, reject) => {
+    const db = new sqlite3.Database('ping.db');
+    db.all(`SELECT * FROM alertas`, (err, rows) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(rows.map((row) => new Alerta(row.nome, row.ip, row.data)));
+      }
+      db.close();
+    });
+  });
+}
 exports.findById = (nome) => {
   return new Promise((resolve, reject) => {
     const db = new sqlite3.Database('ping.db');
