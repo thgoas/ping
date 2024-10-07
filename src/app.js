@@ -4,6 +4,7 @@ const app = express();
 const router = require('./controllers/loja.controller');
 const routerOk = require('./controllers/ok.controller');
 const routerMinutos = require('./controllers/minuto.controller');
+const routerAlertas = require('./controllers/alerta.controller');
 const routerPing = require('./controllers/ping.controller');
 const {open, close} = require('./utils/db');
 const cronJob = require('./cron/ping.cron');
@@ -13,6 +14,7 @@ app.use('/api', router);
 app.use('/',routerOk);
 app.use('/api/ping', routerPing);
 app.use('/api/minutos', routerMinutos)
+app.use('/api/alertas', routerAlertas)
 open();
 close();
 cronJob();
