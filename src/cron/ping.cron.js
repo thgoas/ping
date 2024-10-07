@@ -5,7 +5,7 @@ const {enviarAlerta} = require('../service/enviar.alerta');
 
 
 function cronJob() {
-    cron.schedule('*/2 * * * *', async function () {
+    cron.schedule('* * * * *', async function () {
         try {
             const minuto = await minutoModel.findAll();
             await enviarAlerta(minuto[0].valor);
